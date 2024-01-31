@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% if session.check == null %}
+        <h1>안녕하세요 !</h1>
+        <h1><a href="/products/write">GET 방식 요청하기</a></h1>
+    {% endif %}
+    {% if session.check == '1' %}
+    <form action="/products/write" method="post">
+        <div align="center">
+            <label for="name">제품 이름 입력</label>
+            <input type="text" name="i_name" id="i_name" placeholder="제품 이름을 입력하세요!">
+        </div>
+        <div align="center">
+            <label for="name">제품 가격 입력</label>
+            <input type="text" name="i_price" id="i_price" placeholder="가격을 입력하세요.">
+        </div>
+        <div align="center">
+            <label for="name">제품 설명 입력</label>
+            <textarea name="i_info" id="i_info" placeholder="제품의 설명을 입력하세요."></textarea>
+        </div>
+        <div align="center">
+            <input type="submit" value="등록">
+        </div>
+    </form>
+    {% endif %}
+    {% if session.check == '2' %}
+    <table align="center" border="1">
+        <tr align="center">
+            <td>제품 이름</td>
+            <td>{{session.i_name}}</td>
+        </tr>
+        <tr align="center">
+            <td>제품 가격</td>
+            <td>{{session.i_price}}</td>
+        </tr>
+        <tr align="center">
+            <td>제품 정보</td>
+            <td>{{session.i_info}}</td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center"><h1><a href="/products/delete">쿠키 삭제하기</h1></td>
+        </tr>
+    </table>  
+    {% endif %}
+</body>
+</html>
